@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Вход — Администратор</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/styles/theme-red-white.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h1>Вход</h1>
+            <form id="loginForm">
+                <label for="username">Логин</label>
+                <input id="username" name="username" type="text" required autocomplete="username" />
+                <label for="password">Пароль</label>
+                <input id="password" name="password" type="password" required autocomplete="current-password" />
+                <button type="submit" class="button">Войти</button>
+            </form>
+            <div id="error" class="error" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            var form = document.getElementById('loginForm');
+            var error = document.getElementById('error');
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                var u = document.getElementById('username').value || '';
+                var p = document.getElementById('password').value || '';
+                if (u === 'admin' && p === 'admin') {
+                    try { sessionStorage.setItem('loggedIn','true'); } catch(e){}
+                    location.replace('../index.html');
+                } else {
+                    error.textContent = 'Неверный логин или пароль';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* Бело-красная тема */
+:root{
+    --bg: #ffffff;
+    --accent: #c62828;
+    --accent-dark: #8e1f1f;
+    --text: #222;
+    --muted: #666;
+}
+*{box-sizing:border-box}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    margin:0;
+    padding:36px 24px;
+}
+.container{
+    max-width:980px;margin:0 auto
+}
+
+.header{
+    display:flex;align-items:center;
+    position:relative;
+    padding:6px 0 18px 0
+}
+.logo{
+    display:flex;align-items:center
+}
+.badge{
+    width:48px;
+    height:48px;
+    background:var(--accent);
+    color:#fff;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    margin-right:12px;
+    box-shadow:0 3px 10px rgba(201, 20, 50, 0.12)
+}
+.title{
+    font-size:20px;
+    font-weight:700
+}
+.header-right{
+    position:absolute;
+    right:0;
+    top:6px;
+}
+.header-right .button{
+    background:transparent;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    padding:8px 12px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px
+}
+.card{
+    background:#fff;
+    border:1px solid #f1f1f1;
+    padding:26px 28px;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(16,24,40,0.04)
+}
+.card h2{
+    font-size:26px;
+    margin:0 0 8px 0;
+    color:var(--text)
+}
+.card p{
+    color:var(--muted);
+    margin-top:6px
+}
+.form-row{
+    margin-top:12px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px
+}
+.button{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:12px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer
+}
+.button:hover{
+    background:var(--accent-dark)
+}
+.buttonY{
+    display:inline-block;
+    justify-content: center;
+    background:var(--accent);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:12px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    margin-top:10px;
+    
+}
+.buttonY:hover{
+    background:var(--accent-dark)
+}
+
+/* Центрируем определённую группу кнопок */
+.center-group{
+    display:flex;
+    gap:10px;
+    margin-left:50px;
+    align-items:center;
+    justify-content:center
+}
+
+/* Видимые границы таблиц */
+table{
+    width:100%;
+    border-collapse:collapse;
+    border:1px solid #e6e6e6;
+    margin-top:12px
+}
+table th, table td{
+    border:1px solid #e9e9e9;
+    padding:10px;
+    text-align:left
+}
+table thead th{
+    background:#fafafa
+}
+table tr:hover{
+    background:#fff7f7
+}
+.button.small{
+    padding:6px 10px;
+    font-size:13px;
+    border-radius:8px
+}
+.form-row .button{
+    margin-right:0
+}
+
+/* Login styles */
+.login-container{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+.login-card{
+    width:340px;
+    background:#fff;
+    border:1px solid #f0f0f0;
+    padding:22px;
+    border-radius:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.06)
+}
+.login-card h1{
+    margin:0 0 12px 0;
+    color:var(--accent)
+}
+.login-card label{
+    display:block;
+    margin-top:10px;
+    font-size:13px;
+    color:var(--muted)
+}
+.login-card input{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border:1px solid #ddd;
+    border-radius:6px
+}
+.login-card .button{
+    width:100%;
+    margin-top:14px
+}
+.error{
+    color:var(--accent);
+    margin-top:10px
+}
+
+/* Responsive */
+@media (max-width:420px){
+    .container{padding:12px}
+    .login-card{width:92%}
+}

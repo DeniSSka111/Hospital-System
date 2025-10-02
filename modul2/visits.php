@@ -1,0 +1,51 @@
+<?php
+require_once __DIR__ . '/../db.php';
+?>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Амбулаторные приёмы</title>
+  <link rel="stylesheet" href="../styles/theme-red-white.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card" style="text-align:left;">
+      <h2>Амбулаторные приёмы</h2>
+      <div class="form-row" style="justify-content:space-between; margin-bottom:12px;">
+        
+        <a href="../modul1/patients.php" class="button secondary">Пациенты</a>
+      </div>
+      <?php
+      $q = "SELECT v.id, v.patient_id, p.last_name, p.first_name, v.visit_at, v.doctor, v.department FROM outpatient_visits v LEFT JOIN patients p ON p.patient_id=v.patient_id ORDER BY v.visit_at DESC";
+      $res = $conn->query($q);
+      if ($res && $res->num_rows>0) {
+        echo '<table class="table" cellspacing="0">';
+        echo '<thead><tr><th>ID</th><th>Пациент</th><th>Дата приёма</th><th>Врач</th><th>Отделение</th></tr></thead><tbody>';
+        while ($r = $res->fetch_assoc()) {
+          $pname = htmlspecialchars(trim((string)(($r['last_name'] ?? '') . ' ' . ($r['first_name'] ?? ''))));
+          echo '<tr>';
+          echo '<td>' . htmlspecialchars((string)($r['id'] ?? '')) . '</td>';
+          echo '<td><a href="../modul1/patients.php">' . $pname . '</a></td>';
+          echo '<td>' . htmlspecialchars((string)($r['visit_at'] ?? '')) . '</td>';
+          echo '<td>' . htmlspecialchars((string)($r['doctor'] ?? '')) . '</td>';
+          echo '<td>' . htmlspecialchars((string)($r['department'] ?? '')) . '</td>';
+          echo '</tr>';
+        }
+        echo '</tbody></table>';
+      } else { echo '<p>Записей не найдено.</p>'; }
+      if ($res instanceof mysqli_result) $res->free();
+      $conn->close();
+      ?>
+    <div class="form-row" style="margin-top:12px; justify-content:space-between; width:100%;">
+        <div style="display:flex; gap:10px; justify-content:flex-start;">
+          <a href="add_visit.php" class="button">Добавить приём</a>
+        </div>
+        <div style="display:flex; gap:10px; justify-content:flex-end;">
+          <a href="../index.html" class="button secondary">Назад</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="styles/theme-red-white.css">
+</head>
+<body>
+    <script>
+        (function(){
+            try {
+                if (sessionStorage.getItem('loggedIn') !== 'true') {
+                    if (!location.pathname.match(/login\.html$/)) {
+                        location.replace('modul5/login.html');
+                    }
+                }
+            } catch(e) {}
+        })();
+    </script>
+   
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="badge">Р</div>
+                <div>
+                    <div class="title">Администратор</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <a id="logout" class="button small" href="#">Выйти</a>
+            </div>
+        </div>
+
+        <div class="main-wide-panel">
+            <h2>Добро пожаловать Администратор</h2>
+            <p>Выберите раздел для управления данными</p>
+            
+            <div class="wide-button-grid">
+                <a href="modul1/patients.php" class="button">Управление пациентами</a>
+                <a href="modul2/hospitalizations.php" class="button">Управление госпитализациями</a>
+                <a href="modul3/medications.php" class="button">Лекарства и склад</a>
+                <a href="modul4/reports.php" class="button">Отчёты</a>
+            </div>
+            
+            <div class="bottom-center-button">
+                <a href="modul2/visits.php" class="buttonY">Управление амбулаторными приёмами</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        try {
+            var logoutBtn = document.getElementById('logout');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e){
+                    e.preventDefault();
+                    try { sessionStorage.removeItem('loggedIn'); } catch(e){}
+                    location.replace('modul5/login.html');
+                });
+            }
+        } catch(e) {}
+    </script>
+</body>
+</html>
